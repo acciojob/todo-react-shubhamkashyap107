@@ -15,6 +15,7 @@ const App = () => {
 
   return (
     <div>
+      <h3>To-Do List</h3>
         <input value={text} onChange={(e) => {
           setText(e.target.value)
         }} />
@@ -28,17 +29,18 @@ const App = () => {
 
           setTodos([...todos, newTodo])
 
+          setText("")
         }}>Add Todo</button>
 
         <ul>
           {todos && todos.map((item) => {
-            return <ul key={item.id}>{item.task}  <button onClick={() => {
+            return <li style={{listStyle : "none"}} key={item.id}>{item.task}  <button onClick={() => {
               const narr = todos.filter((todo) => {
                 return todo.id != item.id
               })
 
               setTodos(narr)
-            }}>Delete</button></ul>
+            }}>Delete</button></li>
           })}
         </ul>
     </div>
